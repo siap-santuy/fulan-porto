@@ -151,14 +151,14 @@ function ProjectCard({
             <h3 className="text-base font-bold text-white leading-snug group-hover:text-sky-50 transition-colors">
               {project.name}
             </h3>
-            <p className="text-xs font-mono text-slate-700 mt-0.5">{project.period}</p>
+            <p className="text-xs font-mono text-slate-500 mt-0.5">{project.period}</p>
           </div>
           {project.link && (
             <a
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-700 hover:text-sky-400 transition-colors shrink-0 mt-1"
+              className="text-slate-500 hover:text-sky-400 transition-colors shrink-0 mt-1"
               onClick={e => e.stopPropagation()}
               aria-label="View project"
             >
@@ -193,7 +193,7 @@ function ProjectCard({
             </span>
           ))}
           {project.stack.length > 5 && (
-            <span className="tech-badge text-slate-700">+{project.stack.length - 5}</span>
+            <span className="tech-badge text-slate-500">+{project.stack.length - 5}</span>
           )}
         </div>
       </div>

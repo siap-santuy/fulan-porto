@@ -69,7 +69,7 @@ export default function Contact() {
                     <item.icon size={15} style={{ color: item.color }} />
                   </div>
                   <div className="min-w-0">
-                    <div className="text-xs font-mono text-slate-700 uppercase tracking-wider mb-0.5">{item.label}</div>
+                    <div className="text-xs font-mono text-slate-500 uppercase tracking-wider mb-0.5">{item.label}</div>
                     {item.href ? (
                       <a
                         href={item.href}

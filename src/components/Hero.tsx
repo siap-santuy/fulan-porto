@@ -91,7 +91,7 @@ export default function Hero() {
         {/* Status */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass mb-8 border border-white/8">
           <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-lg shadow-emerald-400/50" style={{ animation: 'pulse 2s infinite' }} />
-          <span className="text-xs font-mono text-slate-400 tracking-wider">Available for opportunities</span>
+          <span className="text-xs font-mono text-slate-500 tracking-wider">Available for opportunities</span>
         </div>
 
         {/* Name */}

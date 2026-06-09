@@ -61,7 +61,7 @@ function ExpCard({
     >
       {/* Timeline dot */}
       <div
-        className="absolute left-3.5 top-6 w-4 h-4 rounded-full border-2 border-[#030712] hidden md:block z-10 shrink-0"
+        className="absolute left-3.5 top-6 w-4 h-4 rounded-full border-2 border-[var(--bg)] hidden md:block z-10 shrink-0"
         style={{ background: exp.color, boxShadow: `0 0 10px ${exp.color}60` }}
       />
 
@@ -83,7 +83,7 @@ function ExpCard({
                 >
                   {exp.type}
                 </span>
-                <span className="text-xs text-slate-700 font-mono">{exp.duration}</span>
+                <span className="text-xs text-slate-500 font-mono">{exp.duration}</span>
               </div>
               <h3 className="text-xl font-bold text-white mb-0.5">{exp.role}</h3>
               <p className="font-semibold text-sm" style={{ color: exp.color }}>{exp.company}</p>
@@ -93,7 +93,7 @@ function ExpCard({
                 <Calendar size={11} />
                 <span className="font-mono text-xs">{exp.period}</span>
               </div>
-              <div className="flex items-center gap-1.5 text-slate-700">
+              <div className="flex items-center gap-1.5 text-slate-500">
                 <MapPin size={11} />
                 <span className="text-xs">{exp.location}</span>
               </div>

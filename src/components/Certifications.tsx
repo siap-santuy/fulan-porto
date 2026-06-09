@@ -65,7 +65,7 @@ export default function Certifications() {
                       {cert.expires ? ` · Exp ${cert.expires}` : ''}
                     </span>
                   </div>
-                  <div className="flex items-start gap-2 text-slate-700 text-xs">
+                  <div className="flex items-start gap-2 text-slate-500 text-xs">
                     <Hash size={11} className="shrink-0 mt-0.5" />
                     <span className="font-mono break-all leading-relaxed">{cert.credentialId}</span>
                   </div>

@@ -7,10 +7,12 @@ import TechStack from './components/TechStack'
 import Certifications from './components/Certifications'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import { useTheme } from './hooks/useTheme'
 
 export default function App() {
+  useTheme()
   return (
-    <div className="min-h-screen bg-[#030712] text-slate-100">
+    <div className="min-h-screen bg-[var(--bg)] text-slate-100">
       <Nav />
       <main>
         <Hero />
