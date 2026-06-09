@@ -1,9 +1,32 @@
-import { ExternalLink, CheckCircle2 } from 'lucide-react'
+import { useState } from 'react'
+import { ExternalLink, CheckCircle2, ChevronDown, ChevronUp } from 'lucide-react'
 import { featuredProjects } from '../data/portfolio'
+import { otherProjects } from '../data/portfolio'
 import { useInView } from '../hooks/useInView'
+
+const allProjects = [
+  ...featuredProjects.map(p => ({ ...p, featured: true })),
+  ...otherProjects.map(p => ({
+    name: p.name,
+    type: p.type,
+    period: p.period,
+    description: p.description,
+    impact: [] as string[],
+    stack: p.stack,
+    accent: p.accent,
+    image: null as string | null,
+    link: p.link,
+    featured: false,
+  })),
+]
+
+const INITIAL_COUNT = 6
 
 export default function FeaturedProjects() {
   const { ref, inView } = useInView(0.05)
+  const [showAll, setShowAll] = useState(false)
+
+  const visible = showAll ? allProjects : allProjects.slice(0, INITIAL_COUNT)
 
   return (
     <section
@@ -12,124 +35,166 @@ export default function FeaturedProjects() {
       className="py-28 relative"
     >
       <div className="max-w-6xl mx-auto px-6">
+        {/* Header */}
         <div
-          className="mb-16 transition-all duration-700"
+          className="mb-14 transition-all duration-700"
           style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)' }}
         >
           <p className="section-tag mb-3">03 — Projects</p>
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-white" style={{ fontFamily: 'Syne, sans-serif' }}>
-            Featured<br />
+            Selected<br />
             <span className="gradient-text">Work</span>
           </h2>
+          <p className="text-slate-500 mt-3 text-sm">
+            {allProjects.length} projects across backend engineering, fullstack development, and automation.
+          </p>
         </div>
 
-        <div className="space-y-8">
-          {featuredProjects.map((p, i) => (
-            <FeaturedCard key={p.name} project={p} index={i} inView={inView} flip={i % 2 === 1} />
+        {/* Project grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {visible.map((project, i) => (
+            <ProjectCard key={project.name} project={project} index={i} inView={inView} />
           ))}
         </div>
+
+        {/* Show More / Less */}
+        {allProjects.length > INITIAL_COUNT && (
+          <div
+            className="flex justify-center mt-10 transition-all duration-700"
+            style={{ opacity: inView ? 1 : 0, transitionDelay: '400ms' }}
+          >
+            <button
+              onClick={() => setShowAll(v => !v)}
+              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl glass border border-white/10 hover:border-sky-500/30 text-slate-300 hover:text-white font-medium text-sm transition-all duration-200 hover:-translate-y-0.5"
+            >
+              {showAll ? (
+                <>
+                  <ChevronUp size={16} />
+                  Show Less
+                </>
+              ) : (
+                <>
+                  <ChevronDown size={16} />
+                  Show {allProjects.length - INITIAL_COUNT} More Projects
+                </>
+              )}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   )
 }
 
-function FeaturedCard({
+function ProjectCard({
   project,
   index,
   inView,
-  flip,
 }: {
-  project: (typeof featuredProjects)[0]
+  project: (typeof allProjects)[0]
   index: number
   inView: boolean
-  flip: boolean
 }) {
   return (
     <div
-      className="transition-all duration-700"
-      style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(28px)', transitionDelay: `${index * 120}ms` }}
+      className="glass rounded-2xl border border-white/6 overflow-hidden group card-hover flex flex-col relative"
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? 'translateY(0)' : 'translateY(20px)',
+        transition: 'all 0.6s ease',
+        transitionDelay: `${(index % INITIAL_COUNT) * 70}ms`,
+      }}
     >
-      <div className="glass rounded-3xl border border-white/7 overflow-hidden group hover:border-white/12 transition-all duration-500 hover:shadow-2xl hover:shadow-sky-500/5">
-        <div className={`grid lg:grid-cols-2 ${flip ? 'lg:[&>*:first-child]:order-2' : ''}`}>
-          {/* Visual panel */}
-          <div className="relative overflow-hidden min-h-[220px] lg:min-h-[300px]">
-            <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${project.accent}12, transparent 60%)` }} />
-            <div className="absolute inset-0 grid-bg opacity-30" />
-            <img
-              src={project.image}
-              alt={project.name}
-              className="w-full h-full object-cover opacity-15 group-hover:opacity-20 transition-opacity duration-700 scale-105 group-hover:scale-100"
-              style={{ minHeight: '220px' }}
-            />
+      {/* Top accent */}
+      <div className="h-px" style={{ background: `linear-gradient(to right, ${project.accent}55, transparent)` }} />
 
-            {/* Mockup overlay */}
-            <div className="absolute inset-0 p-6 flex flex-col justify-end">
-              <div className="glass rounded-xl p-4 border border-white/10 max-w-[260px]">
-                <div className="flex items-center gap-1.5 mb-3">
-                  <div className="w-2 h-2 rounded-full bg-red-400/50" />
-                  <div className="w-2 h-2 rounded-full bg-yellow-400/50" />
-                  <div className="w-2 h-2 rounded-full bg-green-400/50" />
-                  <span className="ml-auto font-mono text-xs text-slate-700">prod</span>
-                </div>
-                <div className="space-y-1.5">
-                  {[0.75, 1, 0.85, 0.6].map((w, i) => (
-                    <div key={i} className="h-1.5 rounded-full bg-white/8" style={{ width: `${w * 100}%` }} />
-                  ))}
-                </div>
-                <div className="mt-3 flex gap-2">
-                  <div className="h-5 w-14 rounded-md" style={{ background: `${project.accent}25`, border: `1px solid ${project.accent}35` }} />
-                  <div className="h-5 w-8 rounded-md bg-white/5" />
-                </div>
+      {/* Image (featured only) */}
+      {project.image && (
+        <div className="relative h-36 overflow-hidden">
+          <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${project.accent}15, transparent)` }} />
+          <div className="absolute inset-0 grid-bg opacity-30" />
+          <img
+            src={project.image}
+            alt={project.name}
+            className="w-full h-full object-cover opacity-15 group-hover:opacity-22 transition-opacity duration-500 scale-105 group-hover:scale-100"
+          />
+          {/* Mockup elements */}
+          <div className="absolute bottom-3 left-3">
+            <div className="glass rounded-lg p-2.5 border border-white/10 w-32">
+              <div className="flex gap-1 mb-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-red-400/40" />
+                <div className="w-1.5 h-1.5 rounded-full bg-yellow-400/40" />
+                <div className="w-1.5 h-1.5 rounded-full bg-green-400/40" />
+              </div>
+              <div className="space-y-1">
+                {[1, 0.7, 0.85].map((w, i) => (
+                  <div key={i} className="h-1 rounded-full bg-white/10" style={{ width: `${w * 100}%` }} />
+                ))}
               </div>
             </div>
+          </div>
+        </div>
+      )}
 
-            {/* Type badge */}
-            <div className="absolute top-5 left-5">
+      <div className="p-5 flex flex-col flex-1">
+        {/* Header */}
+        <div className="flex items-start justify-between gap-3 mb-3">
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 mb-1.5">
               <span
-                className="text-xs font-mono font-semibold px-3 py-1 rounded-full"
-                style={{ background: `${project.accent}20`, color: project.accent, border: `1px solid ${project.accent}30` }}
+                className="text-xs font-mono font-semibold px-2 py-0.5 rounded-full shrink-0"
+                style={{ background: `${project.accent}12`, color: project.accent, border: `1px solid ${project.accent}25` }}
               >
-                {project.type}
+                {project.featured ? '★ Featured' : project.type}
               </span>
             </div>
-          </div>
-
-          {/* Content panel */}
-          <div className="p-7 lg:p-10 flex flex-col justify-center">
-            <p className="section-tag mb-3">{project.period}</p>
-            <h3 className="font-display text-2xl font-bold text-white mb-3 leading-tight" style={{ fontFamily: 'Syne, sans-serif' }}>
+            <h3 className="text-base font-bold text-white leading-snug group-hover:text-sky-50 transition-colors">
               {project.name}
             </h3>
-            <p className="text-slate-400 text-sm leading-relaxed mb-5">{project.description}</p>
-
-            <ul className="space-y-2 mb-5">
-              {project.impact.map((item, i) => (
-                <li key={i} className="flex items-start gap-2.5 text-sm text-slate-300">
-                  <CheckCircle2 size={13} className="shrink-0 mt-0.5" style={{ color: project.accent }} />
-                  {item}
-                </li>
-              ))}
-            </ul>
-
-            <div className="flex flex-wrap gap-1.5 mb-5">
-              {project.stack.map(t => <span key={t} className="tech-badge">{t}</span>)}
-            </div>
-
-            {project.link ? (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-medium transition-colors"
-                style={{ color: project.accent }}
-              >
-                View Live Project
-                <ExternalLink size={13} />
-              </a>
-            ) : (
-              <span className="text-xs font-mono text-slate-700">Internal / Company Tool</span>
-            )}
+            <p className="text-xs font-mono text-slate-700 mt-0.5">{project.period}</p>
           </div>
+          {project.link && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-700 hover:text-sky-400 transition-colors shrink-0 mt-1"
+              onClick={e => e.stopPropagation()}
+              aria-label="View project"
+            >
+              <ExternalLink size={15} />
+            </a>
+          )}
+        </div>
+
+        <p className="text-xs text-slate-500 leading-relaxed mb-4 flex-1">{project.description}</p>
+
+        {/* Impact bullets (featured only) */}
+        {project.impact.length > 0 && (
+          <div className="space-y-1.5 mb-4">
+            {project.impact.slice(0, 3).map((item, i) => (
+              <div key={i} className="flex items-start gap-2 text-xs text-slate-400">
+                <CheckCircle2 size={11} className="shrink-0 mt-0.5" style={{ color: project.accent }} />
+                {item}
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Tech stack */}
+        <div className="flex flex-wrap gap-1.5 mt-auto">
+          {project.stack.slice(0, 5).map(t => (
+            <span
+              key={t}
+              className="tech-badge"
+              style={{ color: `${project.accent}cc`, borderColor: `${project.accent}20`, background: `${project.accent}08` }}
+            >
+              {t}
+            </span>
+          ))}
+          {project.stack.length > 5 && (
+            <span className="tech-badge text-slate-700">+{project.stack.length - 5}</span>
+          )}
         </div>
       </div>
     </div>

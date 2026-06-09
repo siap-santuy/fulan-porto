@@ -3,7 +3,6 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Experience from './components/Experience'
 import FeaturedProjects from './components/FeaturedProjects'
-import OtherProjects from './components/OtherProjects'
 import TechStack from './components/TechStack'
 import Certifications from './components/Certifications'
 import Contact from './components/Contact'
@@ -18,7 +17,6 @@ export default function App() {
         <About />
         <Experience />
         <FeaturedProjects />
-        <OtherProjects />
         <TechStack />
         <Certifications />
         <Contact />

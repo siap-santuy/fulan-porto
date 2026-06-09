@@ -48,7 +48,7 @@ export default function Nav() {
           <div className="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/25 flex items-center justify-center transition-all group-hover:border-sky-500/50 group-hover:bg-sky-500/15">
             <span className="text-sky-400 font-mono text-sm font-bold">FA</span>
           </div>
-          <span className="text-sm font-semibold text-slate-400 group-hover:text-white transition-colors hidden sm:block">
+          <span className="text-sm font-semibold text-slate-500 group-hover:text-white transition-colors hidden sm:block">
             fajri.dev
           </span>
         </a>
@@ -69,10 +69,10 @@ export default function Nav() {
             </a>
           ))}
           <a
-            href="mailto:fajri42vandi@gmail.com"
-            className="ml-3 px-4 py-2 rounded-lg text-sm font-semibold bg-sky-500 hover:bg-sky-400 text-white transition-all duration-200 shadow-lg shadow-sky-500/20"
+            href="#contact"
+            className="ml-3 px-4 py-2 rounded-lg text-sm font-semibold bg-sky-500 hover:bg-sky-400 text-white transition-all duration-200 shadow-lg shadow-sky-500/20 hover:-translate-y-0.5"
           >
-            Hire Me
+            Get In Touch
           </a>
         </div>
 
@@ -100,11 +100,11 @@ export default function Nav() {
             </a>
           ))}
           <a
-            href="mailto:fajri42vandi@gmail.com"
+            href="#contact"
             onClick={() => setMobileOpen(false)}
-            className="mt-2 px-4 py-3 rounded-lg text-sm font-semibold bg-sky-500 text-white text-center"
+            className="mt-2 px-4 py-3 rounded-lg text-sm font-semibold bg-sky-500 text-white text-center hover:bg-sky-400 transition-all"
           >
-            Hire Me
+            Get In Touch
           </a>
         </div>
       )}
