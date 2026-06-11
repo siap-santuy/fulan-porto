@@ -68,11 +68,11 @@ export default function Hero() {
 
       {/* Floating dots */}
       {([
-        { top: '12%', left: '8%', right: undefined, delay: '0s', size: 'w-2 h-2' },
-        { top: '25%', left: undefined, right: '12%', delay: '1.5s', size: 'w-1.5 h-1.5' },
-        { top: '70%', left: '6%', right: undefined, delay: '2.8s', size: 'w-1 h-1' },
-        { top: '80%', left: undefined, right: '8%', delay: '0.7s', size: 'w-2 h-2' },
-        { top: '45%', left: '3%', right: undefined, delay: '3.5s', size: 'w-1 h-1' },
+        { top: '12%', left: '13%', right: undefined, delay: '0s', size: 'w-2 h-2' },
+        { top: '25%', left: undefined, right: '17%', delay: '1.5s', size: 'w-1.5 h-1.5' },
+        { top: '70%', left: '11%', right: undefined, delay: '2.8s', size: 'w-1 h-1' },
+        { top: '80%', left: undefined, right: '13%', delay: '0.7s', size: 'w-2 h-2' },
+        { top: '45%', left: '8%', right: undefined, delay: '3.5s', size: 'w-1 h-1' },
       ] as const).map((dot, i) => (
         <div
           key={i}
