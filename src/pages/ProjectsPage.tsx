@@ -1,10 +1,9 @@
-import { ExternalLink, CheckCircle2, LayoutGrid } from 'lucide-react'
-import { featuredProjects } from '../data/portfolio'
-import { otherProjects } from '../data/portfolio'
-import { useInView } from '../hooks/useInView'
+import { useState, useEffect } from 'react'
+import { ArrowLeft, ExternalLink, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react'
+import { featuredProjects, otherProjects } from '../data/portfolio'
 
 const allProjects = [
-  ...featuredProjects.map(p => ({ ...p, featured: true })),
+  ...featuredProjects.map(p => ({ ...p, featured: true as const })),
   ...otherProjects.map(p => ({
     name: p.name,
     type: p.type,
@@ -15,83 +14,115 @@ const allProjects = [
     accent: p.accent,
     image: null as string | null,
     link: p.link,
-    featured: false,
+    featured: false as const,
   })),
 ]
 
-const INITIAL_COUNT = 6
+const PAGE_SIZE = 6
 
-export default function FeaturedProjects({ onViewAll }: { onViewAll: () => void }) {
-  const { ref, inView } = useInView(0.05)
+export default function ProjectsPage({ onBack }: { onBack: () => void }) {
+  const [page, setPage] = useState(0)
+  const totalPages = Math.ceil(allProjects.length / PAGE_SIZE)
+  const current = allProjects.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
 
-  const visible = allProjects.slice(0, INITIAL_COUNT)
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [page])
 
   return (
-    <section
-      id="projects"
-      ref={ref as React.RefObject<HTMLElement>}
-      className="py-28 relative"
-    >
-      <div className="max-w-6xl mx-auto px-6">
+    <div className="min-h-screen bg-[var(--bg)]">
+      {/* Top bar */}
+      <div className="sticky top-0 z-40 bg-[var(--bg-nav)] backdrop-blur-xl border-b border-[var(--border)] px-6 py-4">
+        <div className="max-w-6xl mx-auto flex items-center gap-4">
+          <button
+            onClick={onBack}
+            className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm font-medium"
+          >
+            <ArrowLeft size={16} />
+            Back to Portfolio
+          </button>
+          <div className="h-4 w-px bg-white/10" />
+          <span className="text-slate-500 text-sm font-mono">
+            {allProjects.length} Projects Total
+          </span>
+        </div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 py-16">
         {/* Header */}
-        <div
-          className="mb-14 transition-all duration-700"
-          style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)' }}
-        >
-          <p className="section-tag mb-3">03 — Projects</p>
-          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white" style={{ fontFamily: 'Syne, sans-serif' }}>
-            Selected<br />
-            <span className="gradient-text">Work</span>
-          </h2>
-          <p className="text-slate-500 mt-3 text-sm">
-            {allProjects.length} projects across backend engineering, fullstack development, and automation.
+        <div className="mb-12">
+          <p className="section-tag mb-3">All Projects</p>
+          <h1
+            className="font-display text-4xl sm:text-5xl font-bold text-white mb-3"
+            style={{ fontFamily: 'Syne, sans-serif' }}
+          >
+            Complete<br />
+            <span className="gradient-text">Work Archive</span>
+          </h1>
+          <p className="text-slate-500 text-sm">
+            Page {page + 1} of {totalPages} — showing {current.length} of {allProjects.length} projects
           </p>
         </div>
 
-        {/* Project grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {visible.map((project, i) => (
-            <ProjectCard key={project.name} project={project} index={i} inView={inView} />
+        {/* Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+          {current.map((project, i) => (
+            <ProjectCard key={project.name} project={project} index={i} />
           ))}
         </div>
 
-        {/* View All */}
-        {allProjects.length > INITIAL_COUNT && (
-          <div
-            className="flex justify-center mt-10 transition-all duration-700"
-            style={{ opacity: inView ? 1 : 0, transitionDelay: '400ms' }}
-          >
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex items-center justify-center gap-2">
             <button
-              onClick={onViewAll}
-              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl glass border border-[var(--border-hi)] hover:border-sky-500/40 text-slate-300 hover:text-white font-medium text-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-sky-500/10"
+              onClick={() => setPage(p => Math.max(0, p - 1))}
+              disabled={page === 0}
+              className="w-10 h-10 rounded-xl glass border border-[var(--border)] flex items-center justify-center text-slate-400 hover:text-white hover:border-sky-500/30 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
             >
-              <LayoutGrid size={16} />
-              View All {allProjects.length} Projects
+              <ChevronLeft size={16} />
+            </button>
+
+            {Array.from({ length: totalPages }, (_, i) => (
+              <button
+                key={i}
+                onClick={() => setPage(i)}
+                className={`w-10 h-10 rounded-xl font-mono text-sm font-medium transition-all ${
+                  i === page
+                    ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/25'
+                    : 'glass border border-[var(--border)] text-slate-400 hover:text-white hover:border-sky-500/30'
+                }`}
+              >
+                {i + 1}
+              </button>
+            ))}
+
+            <button
+              onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))}
+              disabled={page === totalPages - 1}
+              className="w-10 h-10 rounded-xl glass border border-[var(--border)] flex items-center justify-center text-slate-400 hover:text-white hover:border-sky-500/30 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              <ChevronRight size={16} />
             </button>
           </div>
         )}
       </div>
-    </section>
+    </div>
   )
 }
 
 function ProjectCard({
   project,
   index,
-  inView,
 }: {
   project: (typeof allProjects)[0]
   index: number
-  inView: boolean
 }) {
   return (
     <div
       className="glass rounded-2xl border border-white/6 overflow-hidden group card-hover flex flex-col relative"
       style={{
-        opacity: inView ? 1 : 0,
-        transform: inView ? 'translateY(0)' : 'translateY(20px)',
-        transition: 'all 0.6s ease',
-        transitionDelay: `${(index % INITIAL_COUNT) * 70}ms`,
+        animation: 'fadeUp 0.5s ease both',
+        animationDelay: `${index * 60}ms`,
       }}
     >
       {/* Top accent */}
@@ -107,21 +138,6 @@ function ProjectCard({
             alt={project.name}
             className="w-full h-full object-cover opacity-15 group-hover:opacity-22 transition-opacity duration-500 scale-105 group-hover:scale-100"
           />
-          {/* Mockup elements */}
-          <div className="absolute bottom-3 left-3">
-            <div className="glass rounded-lg p-2.5 border border-white/10 w-32">
-              <div className="flex gap-1 mb-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-red-400/40" />
-                <div className="w-1.5 h-1.5 rounded-full bg-yellow-400/40" />
-                <div className="w-1.5 h-1.5 rounded-full bg-green-400/40" />
-              </div>
-              <div className="space-y-1">
-                {[1, 0.7, 0.85].map((w, i) => (
-                  <div key={i} className="h-1 rounded-full bg-white/10" style={{ width: `${w * 100}%` }} />
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       )}
 

@@ -1,10 +1,15 @@
 import { useState } from 'react'
-import { MapPin, Calendar, ChevronRight } from 'lucide-react'
+import { MapPin, Calendar, ChevronRight, ChevronDown, ChevronUp } from 'lucide-react'
 import { experiences } from '../data/portfolio'
 import { useInView } from '../hooks/useInView'
 
+const INITIAL_COUNT = 3
+
 export default function Experience() {
   const { ref, inView } = useInView(0.05)
+  const [showAll, setShowAll] = useState(false)
+
+  const visible = showAll ? experiences : experiences.slice(0, INITIAL_COUNT)
 
   return (
     <section
@@ -31,11 +36,36 @@ export default function Experience() {
           <div className="absolute left-[22px] top-4 bottom-4 w-px bg-gradient-to-b from-sky-500/50 via-sky-500/15 to-transparent hidden md:block" />
 
           <div className="space-y-5">
-            {experiences.map((exp, i) => (
+            {visible.map((exp, i) => (
               <ExpCard key={exp.company} exp={exp} index={i} inView={inView} defaultOpen={i === 0} />
             ))}
           </div>
         </div>
+
+        {/* Show More / Less */}
+        {experiences.length > INITIAL_COUNT && (
+          <div
+            className="flex justify-center mt-10 transition-all duration-700"
+            style={{ opacity: inView ? 1 : 0, transitionDelay: '400ms' }}
+          >
+            <button
+              onClick={() => setShowAll(v => !v)}
+              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl glass border border-[var(--border-hi)] hover:border-sky-500/30 text-slate-300 hover:text-white font-medium text-sm transition-all duration-200 hover:-translate-y-0.5"
+            >
+              {showAll ? (
+                <>
+                  <ChevronUp size={16} />
+                  Show Less
+                </>
+              ) : (
+                <>
+                  <ChevronDown size={16} />
+                  Show {experiences.length - INITIAL_COUNT} More Experiences
+                </>
+              )}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   )

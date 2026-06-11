@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { ArrowDown, Mail } from 'lucide-react'
 import { personal } from '../data/portfolio'
+import FloatingTechIcons from './FloatingTechIcons'
 
 const roles = [
   'Backend Engineer',
@@ -57,6 +58,9 @@ export default function Hero() {
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Grid bg */}
       <div className="absolute inset-0 grid-bg opacity-50 pointer-events-none" />
+
+      {/* Floating tech icons */}
+      <FloatingTechIcons />
 
       {/* Glows */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-sky-500/4 blur-[120px] pointer-events-none" />
