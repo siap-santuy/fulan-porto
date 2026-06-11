@@ -4,7 +4,7 @@ export const personal = {
   email: 'fajri42vandi@gmail.com',
   // phone: '+62 859 1065 0075',
   linkedin: 'https://linkedin.com/in/fajri-arvandi',
-  githubProject: 'https://github.com/BANGKIT-CH2-PS156/CC',
+  githubProject: 'https://github.com/fajrCode',
   summary:
     'Software Engineer with hands-on experience building production-grade APIs, internal platforms, and automation systems across diverse industries. Proven ability to develop end-to-end features in Agile environments — from backend architecture and API development to frontend implementation. Contributed to 101+ tasks across 11 Agile sprints and 3 version releases at ParagonCorp.',
   specializations: [
