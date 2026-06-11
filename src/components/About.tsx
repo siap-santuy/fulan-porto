@@ -79,7 +79,7 @@ export default function About() {
               <div className="text-lg font-bold text-white mb-1">University of Nurdin Hamzah</div>
               <div className="text-sm text-slate-400 mb-3">Bachelor of Informatics Engineering · 2021 – 2025 · Jambi, Indonesia</div>
               <div className="flex flex-wrap gap-2">
-                <span className="tech-badge">GPA: 4.00 / 4.00</span>
+                {/* <span className="tech-badge">GPA: 4.00 / 4.00</span> */}
                 <span className="tech-badge">Informatics Engineering</span>
               </div>
             </div>
