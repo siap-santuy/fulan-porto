@@ -10,8 +10,6 @@ export const personal = {
   specializations: [
     'Backend Engineering',
     'Fullstack Development',
-    'API Architecture',
-    'Cloud Computing',
     'Automation Systems',
     'Scalable Web Apps',
   ],
