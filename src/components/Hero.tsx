@@ -130,7 +130,7 @@ export default function Hero() {
             View Projects
           </a>
           <a
-            href="https://drive.google.com/file/d/187uRxqOrbPGGFSKwXRbyY9QJdHkV4dDV/view?usp=drive_link"
+            href="https://drive.google.com/file/d/1qRzJDDw3hFaycAxUXBEQh1U3mte3RUwN/view?usp=sharing"
             className="px-7 py-3.5 rounded-xl glass border border-white/10 hover:border-sky-500/30 text-slate-300 hover:text-white font-semibold text-sm transition-all duration-200 hover:-translate-y-0.5"
           >
             Download Resume
