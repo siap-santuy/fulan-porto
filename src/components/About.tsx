@@ -42,7 +42,7 @@ export default function About() {
             <p className="text-slate-500 leading-relaxed mb-8">
               My engineering mindset is shaped by real production experience — shipping features in Agile sprints, resolving cross-team conflicts, and ensuring reliability under real user load.
             </p>
-            <div className="grid grid-cols-2 gap-3">
+            {/* <div className="grid grid-cols-2 gap-3">
               {pillars.map(p => (
                 <div key={p.title} className="glass rounded-xl p-4 border border-white/5 hover:border-sky-500/20 transition-all group cursor-default">
                   <p.icon size={17} className="text-sky-400 mb-2 group-hover:scale-110 transition-transform" />
@@ -50,7 +50,7 @@ export default function About() {
                   <div className="text-xs text-slate-600 leading-relaxed">{p.desc}</div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Right */}
