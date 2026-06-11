@@ -2,7 +2,7 @@ export const personal = {
   name: 'Fajri Arvandi',
   location: 'Jakarta, Indonesia',
   email: 'fajri42vandi@gmail.com',
-  phone: '+62 859 1065 0075',
+  // phone: '+62 859 1065 0075',
   linkedin: 'https://linkedin.com/in/fajri-arvandi',
   githubProject: 'https://github.com/BANGKIT-CH2-PS156/CC',
   summary:
