@@ -20,7 +20,7 @@ export const personal = {
 export const stats = [
   { value: 101, suffix: '+', label: 'Tasks Delivered', decimals: 0 },
   { value: 11, suffix: '', label: 'Agile Sprints', decimals: 0 },
-  { value: 3, suffix: '', label: 'Versions Released', decimals: 0 },
+  // { value: 3, suffix: '', label: 'Versions Released', decimals: 0 },
   // { value: 4.0, suffix: '', label: 'GPA Score', decimals: 1 },
 ]
 
