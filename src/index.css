@@ -34,6 +34,21 @@ html.light {
   --scroll-trk: #e2e8f0;
 }
 
+/* ─── Light Mode Text Overrides ─────────────────────── */
+html.light body        { color: #1e293b; }
+
+html.light .text-white,
+html.light .text-slate-50,
+html.light .text-slate-100 { color: #0f172a; }
+
+html.light .text-slate-200 { color: #1e293b; }
+html.light .text-slate-300 { color: #334155; }
+html.light .text-slate-400 { color: #475569; }
+html.light .text-slate-500 { color: #64748b; }
+html.light .text-slate-600 { color: #475569; }
+html.light .text-slate-700 { color: #334155; }
+html.light .text-slate-800 { color: #1e293b; }
+
 /* ─── Base ──────────────────────────────────────────── */
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
