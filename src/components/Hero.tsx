@@ -5,10 +5,10 @@ import FloatingTechIcons from './FloatingTechIcons'
 
 const roles = [
   'Backend Engineer',
+  'Software Engineer',
   'Fullstack Developer',
-  'API Architect',
-  'Cloud Engineer',
   'Automation Builder',
+  'Business Process Automation',
 ]
 
 function GithubSvg() {

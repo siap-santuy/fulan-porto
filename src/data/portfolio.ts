@@ -8,10 +8,11 @@ export const personal = {
   summary:
     'Software Engineer with hands-on experience building production-grade APIs, internal platforms, and automation systems across diverse industries. Proven ability to develop end-to-end features in Agile environments — from backend architecture and API development to frontend implementation. Contributed to 101+ tasks across 11 Agile sprints and 3 version releases at ParagonCorp.',
   specializations: [
-    'Backend Engineering',
-    'Fullstack Development',
-    'Automation Systems',
-    'Scalable Web Apps',
+    // 'Backend Development',
+    // 'Software Development',
+    // 'Fullstack Development',
+    // 'Automation Systems',
+    // 'Scalable Web Apps',
   ],
 }
 
