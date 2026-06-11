@@ -21,7 +21,7 @@ function GithubSvg({ size = 16 }: { size?: number }) {
 const contactItems = [
   { label: 'Email', value: personal.email, href: `mailto:${personal.email}`, icon: Mail, color: '#0ea5e9' },
   { label: 'LinkedIn', value: 'linkedin.com/in/fajri-arvandi', href: personal.linkedin, icon: LinkedinSvg, color: '#2563eb' },
-  { label: 'GitHub', value: 'github.com/BANGKIT-CH2-PS156', href: personal.githubProject, icon: GithubSvg, color: '#94a3b8' },
+  { label: 'GitHub', value: 'github.com/fajrCode', href: personal.githubProject, icon: GithubSvg, color: '#94a3b8' },
   { label: 'Location', value: personal.location, href: null, icon: MapPin, color: '#10b981' },
 ]
 
