@@ -4,7 +4,7 @@ const icons = [
     bg: '#1a3a5c',
     border: '#3178c6',
     shadow: '#3178c640',
-    style: { top: '10%', left: '5%' },
+    style: { top: '10%', left: '10%' },
     delay: '0s',
     duration: '6s',
     svg: (
@@ -19,7 +19,7 @@ const icons = [
     bg: '#0f2a1a',
     border: '#68a063',
     shadow: '#68a06340',
-    style: { top: '8%', right: '6%' },
+    style: { top: '8%', right: '11%' },
     delay: '1.2s',
     duration: '7s',
     svg: (
@@ -33,7 +33,7 @@ const icons = [
     bg: '#0a1f3a',
     border: '#2496ed',
     shadow: '#2496ed40',
-    style: { top: '45%', right: '4%' },
+    style: { top: '45%', right: '9%' },
     delay: '2.4s',
     duration: '8s',
     svg: (
@@ -47,7 +47,7 @@ const icons = [
     bg: '#0a1e2e',
     border: '#61dafb',
     shadow: '#61dafb40',
-    style: { bottom: '18%', left: '4%' },
+    style: { bottom: '18%', left: '9%' },
     delay: '0.8s',
     duration: '6.5s',
     svg: (
@@ -64,7 +64,7 @@ const icons = [
     bg: '#0d1117',
     border: '#4a90e2',
     shadow: '#4a90e240',
-    style: { top: '30%', left: '3%' },
+    style: { top: '30%', left: '8%' },
     delay: '3s',
     duration: '7.5s',
     svg: (
@@ -78,7 +78,7 @@ const icons = [
     bg: '#0f1f2e',
     border: '#336791',
     shadow: '#33679140',
-    style: { bottom: '15%', right: '5%' },
+    style: { bottom: '15%', right: '10%' },
     delay: '1.8s',
     duration: '9s',
     svg: (
@@ -92,7 +92,7 @@ const icons = [
     bg: '#2a0f0a',
     border: '#dc382d',
     shadow: '#dc382d40',
-    style: { top: '60%', left: '2%' },
+    style: { top: '60%', left: '7%' },
     delay: '4s',
     duration: '7s',
     svg: (
@@ -106,7 +106,7 @@ const icons = [
     bg: '#1a2a1a',
     border: '#4285f4',
     shadow: '#4285f440',
-    style: { top: '75%', right: '7%' },
+    style: { top: '75%', right: '12%' },
     delay: '2s',
     duration: '8.5s',
     svg: (
