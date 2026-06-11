@@ -101,7 +101,7 @@ export default function Hero() {
         {/* Name */}
         <h1
           className="font-display text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight leading-none mb-4"
-          style={{ fontFamily: 'Syne, sans-serif' }}
+          style={{ fontFamily: 'Electrolize, sans-serif' }}
         >
           <span className="text-white">Fajri</span>
           <span className="gradient-text ml-3 sm:ml-5">Arvandi</span>

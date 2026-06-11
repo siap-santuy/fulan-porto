@@ -102,7 +102,7 @@ export default function TechStack() {
           style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)' }}
         >
           <p className="section-tag mb-3">04 — Tech Stack</p>
-          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white" style={{ fontFamily: 'Syne, sans-serif' }}>
+          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white" style={{ fontFamily: 'Electrolize, sans-serif' }}>
             Tools &<br />
             <span className="gradient-text">Technologies</span>
           </h2>

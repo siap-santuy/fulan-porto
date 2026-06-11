@@ -44,7 +44,7 @@ export default function Contact() {
           style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)' }}
         >
           <p className="section-tag mb-3">06 — Contact</p>
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4" style={{ fontFamily: 'Syne, sans-serif' }}>
+          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4" style={{ fontFamily: 'Electrolize, sans-serif' }}>
             Let's Build<br />
             <span className="gradient-text">Something Great</span>
           </h2>
@@ -99,7 +99,7 @@ export default function Contact() {
                   <Send size={18} className="text-sky-400" />
                 </div>
 
-                <h3 className="font-display text-xl font-bold text-white mb-2" style={{ fontFamily: 'Syne, sans-serif' }}>
+                <h3 className="font-display text-xl font-bold text-white mb-2" style={{ fontFamily: 'Electrolize, sans-serif' }}>
                   Ready to collaborate?
                 </h3>
                 <p className="text-slate-400 text-sm leading-relaxed mb-7">

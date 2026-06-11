@@ -7,7 +7,7 @@ export default {
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
-        display: ['Syne', 'sans-serif'],
+        display: ['Electrolize', 'sans-serif'],
       },
     },
   },

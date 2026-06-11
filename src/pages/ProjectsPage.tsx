@@ -54,7 +54,7 @@ export default function ProjectsPage({ onBack }: { onBack: () => void }) {
           <p className="section-tag mb-3">All Projects</p>
           <h1
             className="font-display text-4xl sm:text-5xl font-bold text-white mb-3"
-            style={{ fontFamily: 'Syne, sans-serif' }}
+            style={{ fontFamily: 'Electrolize, sans-serif' }}
           >
             Complete<br />
             <span className="gradient-text">Work Archive</span>

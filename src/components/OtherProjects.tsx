@@ -16,7 +16,7 @@ export default function OtherProjects() {
           style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)' }}
         >
           <p className="section-tag mb-3">03b — More Projects</p>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-white" style={{ fontFamily: 'Syne, sans-serif' }}>
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-white" style={{ fontFamily: 'Electrolize, sans-serif' }}>
             Other Notable <span className="gradient-text">Work</span>
           </h2>
         </div>

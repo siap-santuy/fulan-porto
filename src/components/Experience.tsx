@@ -25,7 +25,7 @@ export default function Experience() {
           style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)' }}
         >
           <p className="section-tag mb-3">02 — Experience</p>
-          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white" style={{ fontFamily: 'Syne, sans-serif' }}>
+          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white" style={{ fontFamily: 'Electrolize, sans-serif' }}>
             Professional<br />
             <span className="gradient-text">Journey</span>
           </h2>

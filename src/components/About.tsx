@@ -26,7 +26,7 @@ export default function About() {
           style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(24px)' }}
         >
           <p className="section-tag mb-3">01 — About</p>
-          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white leading-tight" style={{ fontFamily: 'Syne, sans-serif' }}>
+          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white leading-tight" style={{ fontFamily: 'Electrolize, sans-serif' }}>
             Turning ideas into<br />
             <span className="gradient-text">production systems</span>
           </h2>
@@ -63,7 +63,7 @@ export default function About() {
                 <div key={s.label} className="glass rounded-2xl p-6 border border-white/5 hover:border-sky-500/15 transition-all relative overflow-hidden group">
                   <div className="absolute inset-0 bg-gradient-to-br from-sky-500/3 to-transparent" />
                   <div className="relative">
-                    <div className="font-display text-3xl font-bold text-white mb-1" style={{ fontFamily: 'Syne, sans-serif' }}>
+                    <div className="font-display text-3xl font-bold text-white mb-1" style={{ fontFamily: 'Electrolize, sans-serif' }}>
                       <Counter to={s.value} suffix={s.suffix} decimals={s.decimals} active={inView} />
                     </div>
                     <div className="text-xs font-mono text-slate-600 uppercase tracking-wide">{s.label}</div>
